@@ -1,0 +1,13 @@
+.form-add-team{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+label{
+    margin-top:0.5rem;
+}
+
+input{
+    margin-bottom: 0.5rem;
+}

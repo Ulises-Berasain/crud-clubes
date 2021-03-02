@@ -1,0 +1,37 @@
+.total-teams{
+    display: inline;
+    margin:auto;
+    grid-row: 1;
+}
+
+.button-add{
+    grid-row: 2;
+    margin:auto;
+}
+
+.table-teams{
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+.club-image{
+    max-width: 5vw;
+}
+
+thead{
+    background-color: #a7c942;
+}
+
+tbody{
+    background-color: #eaf2d3;
+}
+
+th{
+    border: 3px solid rgb(0, 0, 0);
+}
+
+td{
+    border: 3px solid rgb(0, 0, 0);
+    padding: 1rem;
+}
