@@ -6,6 +6,7 @@ import TeamInfo from "components/TeamInfo";
 import useTeams from "hooks/useTeams";
 import Header from "components/Header";
 import AddTeam from "components/AddTeam";
+import TeamEdit from "components/TeamEdit";
 
 function App() {
   const {teams} = useTeams(); 
@@ -26,6 +27,10 @@ function App() {
 
           <Route path="/equipo/:nombreEquipo" exact>
             <TeamInfo teams={teams}/>
+          </Route>
+
+          <Route path="/editar/:nombreEquipo" exact>
+            <TeamEdit teams={teams}/>
           </Route>
 
           <Route path="/agregar" exact>

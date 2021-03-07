@@ -11,6 +11,5 @@ export default function useTeams(){
         });
     }, [setTeams]);
 
-    console.log(teams)
     return {teams}
 };

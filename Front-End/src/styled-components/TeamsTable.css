@@ -17,6 +17,7 @@
 
 .club-image{
     max-width: 5vw;
+    min-width: 5vw;
 }
 
 thead{

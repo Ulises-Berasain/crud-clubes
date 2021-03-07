@@ -1,4 +1,9 @@
-.form-add-team{
+.image-club{
+    max-width: 5vw;
+    min-width: 5vw;
+}
+
+.form-edit-team{
     display:flex;
     flex-wrap: wrap;
     flex-direction: column;

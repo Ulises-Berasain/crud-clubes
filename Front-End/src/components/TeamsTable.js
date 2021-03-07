@@ -1,5 +1,5 @@
 import React from "react";
-import "styled-components/Teams.css";
+import "styled-components/TeamsTable.css";
 import {useHistory} from "react-router-dom";
 import {Link} from "react-router-dom";
 
@@ -8,7 +8,31 @@ export default function TeamsTable(props){
 
     const handleOnClickInfo = (e)=>{
         return history.replace(`/equipo/${e.target.className}`)
-    } 
+    };
+    
+    const handleOnClickEdit = (e)=>{
+        return history.replace(`/editar/${e.target.className}`)
+    };
+
+    const handleOnClickDelete = (e)=>{
+        const teamToDelete = props.teams.filter(team => {
+            return team.name === e.target.className? team.name : false
+        });
+
+        fetch(`http://localhost:8080/api/equipos`, {
+        method: 'DELETE',
+        body: JSON.stringify({teamToDelete}),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'this-can-be-anything',
+        },
+      })
+        .then(res => res.json())
+        .then(json => console.log(json));
+
+        window.location.reload();
+    };
 
     return(
         <React.Fragment>
@@ -41,8 +65,12 @@ export default function TeamsTable(props){
                                     <button onClick={(e)=>{
                                         handleOnClickInfo(e)
                                     }} className={team.name}>Ver</button>
-                                    <button onClick={props.edit}>Editar</button>
-                                    <button onClick={props.delete}>Eliminar</button>
+                                    <button onClick={(e) =>{
+                                        handleOnClickEdit(e)
+                                    }} className={team.name}>Editar</button>
+                                    <button onClick={(e)=>{
+                                        handleOnClickDelete(e)
+                                    }}className={team.name}>Eliminar</button>
                                 </td>
                             </tr>
                         )

@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import "styled-components/AddTeam.css";
+import {useHistory} from "react-router-dom";
 
 export default function AddTeam(){
     const [team, setTeam] = useState({
@@ -10,28 +11,32 @@ export default function AddTeam(){
         website: "",
         image: "",
         country: "",
-    })
+    });
+    const history = useHistory();
   
     const submit = (e) => {
-      e.preventDefault()
-      fetch(`http://localhost:8080/api/equipos`, {
-        method: 'POST',
-        body: JSON.stringify({ team }),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'this-can-be-anything',
-        },
-      })
+        e.preventDefault()
+        fetch(`http://localhost:8080/api/equipos`, {
+            method: 'POST',
+            body: JSON.stringify({ team }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'this-can-be-anything',
+            },
+        })
         .then(res => res.json())
-        .then(json => console.log(json))
-    }
+        .then(json => console.log(json));
+
+        history.replace("/");
+        window.location.reload();
+    };
 
     const onChange = (e)=>{
-        const newTeam={...team}
-        newTeam[e.target.name] = e.target.value
-        setTeam(newTeam)
-    }
+        const newTeam={...team};
+        newTeam[e.target.name] = e.target.value;
+        setTeam(newTeam);
+    };
 
     return(
         <form onSubmit={submit} action="http://localhost:8080/api/equipos" method="POST" encType="multipart/form-data" className="form-add-team">
