@@ -1,0 +1,5 @@
+.container-table-teams{
+    display:grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 5vh 5vh 90vh;
+}
